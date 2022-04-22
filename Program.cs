@@ -11,12 +11,12 @@ namespace MoodAnalyser
         static void Main(string[] args)
         {
             Console.WriteLine("*****Mood Analyser***** ");
-            MoodCheck forsad = new MoodCheck("Sad");
+            MoodCheck forsad = new MoodCheck("sad");
             Console.WriteLine("Im Sad :" + forsad.AnalyzeMood());
-            MoodCheck forhappy = new MoodCheck("Happy");
+            MoodCheck forhappy = new MoodCheck("happy");
             Console.WriteLine("Im in AnyMood : " + forhappy.AnalyzeMood());
 
-           
+
             MoodCheck fornull = new MoodCheck("");
             Console.WriteLine(" Null Mood : " + fornull.AnalyzeMood());
 

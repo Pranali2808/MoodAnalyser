@@ -22,18 +22,30 @@ namespace MoodAnalyser
         {
             try 
             {
-                if (this.message.Contains("sad"))//use of contain method
+                if (this.message.Equals(string.Empty))
+                {
+                    throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.EMPTY_MESSAGE, "Mood should not be Empty");
+                }
+                else if (this.message.Contains("sad")) 
+                {
                     return "sad";
-                else if (this.message.Contains("happy"))
+                }
+                else
+                {
                     return "happy";
-                else if (this.message.Contains(null))
-                    return "happy";
+                }
             }
-            catch 
+            catch (NullReferenceException)
             {
-                return "happy";
+                throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.NULL_MESSAGE, "Mood should not be null");
             }
-            return null; 
+            catch (MoodAnalysisException exception)
+            {
+                return exception.Message;
+            }
+
+
+
         }
     }
 }

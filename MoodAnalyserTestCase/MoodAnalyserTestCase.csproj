@@ -5,11 +5,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-<<<<<<< HEAD
-    <ProjectGuid>{3EBE83A5-AD1A-4BF2-891C-E4291B21DA7A}</ProjectGuid>
-=======
     <ProjectGuid>{8B571305-A3A5-44B2-8BEB-C72F3705FDED}</ProjectGuid>
->>>>>>> UC2_HandleException
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MoodAnalyserTestCase</RootNamespace>
