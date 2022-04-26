@@ -69,13 +69,58 @@ namespace MoodAnalyserTestCase
             }
         }
         [TestMethod]
-        public  void EmptyUsingException()
+        public void EmptyUsingException()
         {    //Arrange
             string expected = "Mood should not be Empty";
             //Act
             MoodCheck moodanalyser = new MoodCheck("");
             string actual = moodanalyser.AnalyzeMood();
             Assert.AreEqual(expected, actual);
+        }
+
+        //TC4.1: class name should return object
+        [TestMethod]
+        public void ReturnObject()
+        {
+            MoodCheck expected = new MoodCheck();
+            object resultobj = MoodAnalyserFactory.CreateMoodAnalyserObject("MoodAnalyzerProblem.MoodAnalyzer", "MoodAnalyzer");//act
+            //Assert
+            expected.Equals(resultobj);
+        }
+
+        //TC4.2: class name not proper should throw MoodAnalysisException
+        [TestMethod]
+        public void IndicatingNoSuchClass()
+        {
+            try
+            {
+                //Arrange
+                string className = "WrongNamespace.MoodAnalyzer";
+                string constructorName = "MoodAnalyzer";
+                object resultObj = MoodAnalyserFactory.CreateMoodAnalyserObject(className, constructorName);//act
+            }
+            catch (MoodAnalysisException e)
+            {
+                Assert.AreEqual("Class Not Found", e.Message);
+            }
+        }
+        [TestMethod]
+        //TC4.3: when constructor not proper should throw MoodAnalysisException
+        public void IndicatingNoSuchConstuctor()
+        {
+            try
+            {
+                //Arrange
+                string className = "MoodAnalyzer.MoodAnalyzer";
+                string constructorName = "WrongConstructorName";
+
+                object resultObj = MoodAnalyserFactory.CreateMoodAnalyserObject(className, constructorName);//act
+            }
+            catch (MoodAnalysisException e)
+            {
+                Assert.AreEqual("Constructor is not Found", e.Message);
+
+            }
         }
     }
 }
